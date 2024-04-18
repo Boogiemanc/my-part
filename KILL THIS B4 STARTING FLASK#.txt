@@ -1,0 +1,12 @@
+4608 INTEL 
+4124 INTEL
+4480 INTEL GRAHICS COMMAND CENTER SERVICE
+   // ctrl+ shift+ R !!!!! can help you refresh flask instead of manual refresh
+netstat -ano | findstr 5000
+ use this to find who is using
+
+flask --app VIZ.py run --debug
+
+
+Fuck you unicode
+
