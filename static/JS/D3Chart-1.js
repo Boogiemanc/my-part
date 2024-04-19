@@ -2,14 +2,14 @@
 //SHARED CONSTANTS FOR DYNAMIC CHARTS 
 let  Container_Bar = document.getElementById("svg_container");
 var ContainerPos =Container_Bar.getBoundingClientRect();
-let HEIGHT = 600;
-let WIDTH= ContainerPos.height;
+let HEIGHT = 400;
+let WIDTH= ContainerPos.width;
 
 //CONSTANT FOR MARGINS
 var Marginleft =50;
 var MarginTop = 10;
 var MarginBottom =  20;
-var MarginRight = 30;
+var MarginRight = 90;
 
 var ASPECT = WIDTH/HEIGHT;
 //FAKE DATA /////
@@ -27,18 +27,18 @@ letters = ["A", "B", "C", "D", "E","F"]
 //scale
 var scaleY = d3.scalePoint()
  .domain(data2)
- .range([HEIGHT-MarginRight,0 ]);
+ .range([HEIGHT-Marginleft,0 ]);
 var scaleX= d3.scaleLinear()
 .domain([ 100,0])
-.range([ HEIGHT ,MarginTop ]);
+.range([ WIDTH-MarginRight,0 ]);
 //test scale
 
 
 d3.select(window)
 .on("resize", function(){
-    var target_Width  = svg1.node().getBoundingClientRect().width/2;
-    WIDTH = target_Width;
-    HEIGHT = target_Width/ASPECT;
+    var target_Width  = svg1.node().getBoundingClientRect().width;
+WIDTH = target_Width;
+   // HEIGHT = target_Width/ASPECT;
     svg1.attr("width", "100%");
     svg1.attr("height", HEIGHT);
     scaleX= d3.scaleLinear()
@@ -59,14 +59,14 @@ var x_axis = d3.axisBottom().scale(scaleX);
 var y_axis = d3.axisLeft(scaleY);
 //create axis on chart
 svg1.append("g")
-.attr("transform",`translate(${Marginleft}, ${HEIGHT-MarginBottom})` )
+.attr("transform",`translate(${Marginleft}, ${HEIGHT-MarginBottom-10})` )
 .call(x_axis);
 svg1.append("g")
-.attr("transform",`translate( ${Marginleft+10},${MarginBottom-10} )`)
+.attr("transform",`translate( ${Marginleft},${MarginBottom} )`)
 .call(y_axis);
 
 ///////////////////////////////////////
-/////////////////////////////////////////PIE CHART//////////////////////////////////////////////////
+////PIE CHART//////////////////////////////////////////////////
 let  Container_Pie = document.getElementById("svg_container2");
 var ContainerPos_PI =Container_Pie.getBoundingClientRect();
 let HEIGHT_PI = 600;//ContainerPos_PI.height;
